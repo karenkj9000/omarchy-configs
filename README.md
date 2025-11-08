@@ -67,3 +67,6 @@ To add a boot screen wallpaper, copy the image file to the `/boot` directory and
 ```bash
 wallpaper: boot():/WALLPAPER_PATH
 ```
+
+## Acknowledgement
+A huge thanks to DHH and the contributors to the official [Omarchy GitHub](https://github.com/basecamp/omarchy) repository for creating such a great setup.

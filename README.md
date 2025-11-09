@@ -54,13 +54,23 @@ does not work, because the "work-tree" is the entire home directory (~/), runnin
 
 ## Manual System Setup
 
-### 1. Bootloader 
-To the kernel command line in `limine.conf`, add us
+### 1. Fix Brightness Controls Not Working
+This is needed for brightness control on hybrid AMD/Nvidia GPU laptops (especially if `brightnessctl info` shows an NVIDIA device but the controls still don't work).
 
+This system uses a Unified Kernel Image (UKI), which means the kernel command line parameters are embedded directly into the kernel's .efi file at build time. Simply editing `limine.conf` in `/boot` will not work. The default Limine configuration file must be edited and then the UKI should be rebuilt.
+
+* Go to `/etc/default/limine`. Find the `KERNEL_CMDLINE="..."` line and add the below boot parameters inside the quotes.
 ```bash
 acpi_backlight=native
+
 ```
-This is needed for brightness control on hybrid AMD/Nvidia GPU laptops (especially if `brightnessctl info` shows an NVIDIA device but the controls still don't work).
+* Run the limine-update script
+
+```bash
+sudo limine-update
+```
+
+This reads the modified config file and builds a new UKI with the changes embedded. Reboot the system and it will use the new kernel parameters.
 
 ### 2. Boot Wallpaper
 To add a boot screen wallpaper, copy the image file to the `/boot` directory and add the below line to the `limine.conf` file.

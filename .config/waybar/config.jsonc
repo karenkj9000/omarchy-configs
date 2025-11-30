@@ -4,11 +4,16 @@
   "position": "top",
   "spacing": 0,
   "height": 26,
-  "modules-left": ["custom/omarchy", "hyprland/workspaces"],
+
+  "margin-top": 8,
+  "margin-left": 8,
+  "margin-right": 8,
+
+  "modules-left": ["custom/omarchy", "hyprland/workspaces", "hyprland/window"],
   "modules-center": ["clock", "custom/update", "custom/screenrecording-indicator"],
   "modules-right": [
+    "mpris",
     "group/tray-expander",
-    "bluetooth",
     "network",
     "pulseaudio",
     "cpu",
@@ -52,6 +57,14 @@
     "tooltip-format": "Omarchy update available",
     "signal": 7,
     "interval": 3600
+  },
+  "group/tray-expander": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 600,
+      "children-class": "tray-group-item"
+    },
+    "modules": ["custom/expand-icon", "tray", "bluetooth"]
   },
   "cpu": {
     "interval": 5,
@@ -101,6 +114,7 @@
     "spacing": 1,
     "on-click": "omarchy-launch-wifi"
   },
+
   "memory": {
     "format": " {used:.1f}G",
     "interval": 5,
@@ -108,7 +122,8 @@
     "states": {
         "warning": 85,
         "critical": 95
-    }
+    },
+    "on-click": "$TERMINAL -e btop"
   },
   "battery": {
     "format": "{icon} {capacity}%",
@@ -147,14 +162,6 @@
       "default": ["", "", ""]
     }
   },
-  "group/tray-expander": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 600,
-      "children-class": "tray-group-item"
-    },
-    "modules": ["custom/expand-icon", "tray"]
-  },
   "custom/expand-icon": {
     "format": "",
     "tooltip": false
@@ -167,7 +174,28 @@
   },
   "tray": {
     "icon-size": 12,
-    "spacing": 17
+    "spacing": 12
+  },
+  "hyprland/window": {
+    "format": "{title}",
+    "max-length": 70,
+    "tooltip": false,
+    "rewrite": {
+      // custom truncation BEFORE icon rewrite:
+        "^(.{70,70}).+": "$1…"
+    }
+  },
+  "mpris": {
+    "format": "{player_icon} {artist} - {title}",
+    "format-paused": "{status_icon} <i>{artist} - {title}</i>",
+    "player-icons": {
+      "default": "🎵",
+      "mpv": "🎵"
+    },
+    "status-icons": {
+      "paused": "⏸"
+    },
+    "max-length": 50
   }
 }
 

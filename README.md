@@ -91,6 +91,10 @@ To add a boot screen wallpaper, copy the image file to the `/boot` directory and
 wallpaper: boot():/WALLPAPER_PATH
 ```
 
+### 3. Make Firefox Work with WebApps
+
+The process I followed in my system is to create new scripts in `/.local/bin`. Based off the following discussion: [Using Firefox as the WebApp Browser in Omarchy - Solution / Tutorial](https://github.com/basecamp/omarchy/discussions/2468)
+
 ## Add Windows Boot Manager to Limine and Secure Boot
 
 [Omarchy Dual-Boot Secure Boot Setup (Custom Keys Guide)](https://github.com/basecamp/omarchy/discussions/2296)

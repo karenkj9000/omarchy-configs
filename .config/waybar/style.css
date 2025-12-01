@@ -58,6 +58,10 @@ mpris.empty {
   margin: 0 0 0 5;
 }
 
+#bluetooth {
+  margin: 0 0 0 -10;
+}
+
 #custom-expand-icon {
   margin-right: 12px;
 }

@@ -135,8 +135,9 @@ tooltip {
 #battery.charging {
   color: #2ecc71;
 }
-#battery.full {
-  color: #00bfff;
+#battery.full,
+#battery.plugged {
+  color: #e8ab3b;
 }
 
 #memory.warning {
